@@ -20,5 +20,3 @@ public class MainActivity extends Activity {
 	}
 
 }
-//test
-//test
