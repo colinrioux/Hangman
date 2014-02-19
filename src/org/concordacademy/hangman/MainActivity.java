@@ -1,32 +1,68 @@
 package org.concordacademy.hangman;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
 
-	private final String TAG = "Main Activity";
+	private final String MA = "[Main Activity]";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Log.i(MA, "Loading Title Screen.");
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	
+	// This Below Starts the Intent Push to the "Play Screen"
 
 	public void playGame(View v) {
-		Log.i(TAG, "Starting Game");
+		Log.i(MA, "Starting Game");
+		Intent pushToPlayScreen = new Intent(this, PlayScreen.class);
+		startActivity(pushToPlayScreen);
 		
 
 	}
+	
+	@Override
+    public void onStart()
+    {
+    	super.onStart();
+    	Log.i(MA, "onStart");
+    	
+    }
+    
+    @Override
+    public void onResume() 
+    {
+    	super.onResume();
+    	Log.i(MA, "onResume");
+    }
+    
+    @Override
+    public void onPause() 
+    {
+    	super.onPause();
+    	Log.i(MA, "onPause");
+    }
+    
+    @Override
+    public void onStop() 
+    {
+    	super.onStop();
+    	Log.i(MA, "onStop");
+    }
+    
+    @Override
+    public void onDestroy() 
+    {
+    	super.onDestroy();
+    	Log.i(MA, "onDestroy");
+    }
+
 
 }
