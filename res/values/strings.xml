@@ -5,6 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title">Hangman</string>
-    <string name="ButtonTitle">Button1</string>
+    <string name="ButtonTitle">Play!</string>
 
 </resources>

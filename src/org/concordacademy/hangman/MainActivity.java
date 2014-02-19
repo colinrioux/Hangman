@@ -1,10 +1,14 @@
 package org.concordacademy.hangman;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 
 public class MainActivity extends Activity {
+
+	private final String TAG = "Main Activity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,10 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-}
+	public void playGame(View v) {
+		Log.i(TAG, "Starting Game");
+		
 
-//whoa
+	}
+
+}
