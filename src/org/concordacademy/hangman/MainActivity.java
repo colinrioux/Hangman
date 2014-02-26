@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Log.i(MA, "Loading Title Screen.");
 	}
-
+// test
 	// This Below Starts the Intent Push to the "Play Screen"
 
 	public void playGame(View v) {
