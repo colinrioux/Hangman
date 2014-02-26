@@ -28,6 +28,7 @@ public class PlayScreen extends Activity {
 	// Read Text File entitled wordsEn.txt 
 	public String readFromFile() {
 		String words = "";
+		// Array List That Words being added to
 		ArrayList<String> wordLineArray = new ArrayList<String>();
 		
 		try { 
