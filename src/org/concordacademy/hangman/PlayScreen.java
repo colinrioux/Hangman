@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class PlayScreen extends Activity {
 	// Read Text File entitled wordsEn.txt 
 	public String readFromFile() {
 		String words = "";
+		ArrayList<String> wordLineArray = new ArrayList<String>();
 		
 		try { 
 			InputStream inputstream = openFileInput("wordsEn.txt");
@@ -37,6 +39,7 @@ public class PlayScreen extends Activity {
 				StringBuilder stringBuilder = new StringBuilder();
 				
 				while ( (receiveString = bufferedReader.readLine()) != null ) {
+					wordLineArray.add(receiveString);
 	                stringBuilder.append(receiveString);
 	            }
 				inputstream.close();
