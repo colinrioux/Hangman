@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 
 	public void playGame(View v) {
 		Log.i(MA, "Starting Game");
-		Intent pushToPlayScreen = new Intent(this, PlayScreen.class);
+		Intent pushToPlayScreen = new Intent(MainActivity.this, PlayScreen.class);
 		startActivity(pushToPlayScreen);
 
 	}
