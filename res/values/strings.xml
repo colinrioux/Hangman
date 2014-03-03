@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title">Hangman</string>
     <string name="ButtonTitle">Play!</string>
+    <string name="KeyBoard">KB</string>
 
 </resources>

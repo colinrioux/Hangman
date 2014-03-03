@@ -18,7 +18,7 @@ public class PlayScreen extends Activity {
 	// The String Below will tell Console/LogCat the processes of The PlayScreen Activity
 
 	private final String PS = "Play Screen";
-	private static final Random random = new Random();
+	Random random = new Random();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class PlayScreen extends Activity {
 		    }
 			
 			//R Generator for Strings in wordLineArray 
-			
+			String random = wordLineArray.get(random.nextInt(wordLineArray.size()));
 
 		    return words;
 		  

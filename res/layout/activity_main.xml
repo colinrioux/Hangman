@@ -21,7 +21,7 @@
         android:textSize="50sp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/keyBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
