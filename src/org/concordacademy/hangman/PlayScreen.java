@@ -60,13 +60,18 @@ public class PlayScreen extends Activity {
 		    }
 			
 			//R Generator for Strings in wordLineArray 
-			String random = wordLineArray.get(random.nextInt(wordLineArray.size()));
+			String random = wordLineArray.get(getRandomNumber(0, wordLineArray.size()));
 
 		    return words;
 		  
 		}
 		
-		public void guessTheWord() {
+		// Word Guesser. Remember: Switch statements instead of multiple if's
+		
+		public int getRandomNumber(int min, int max) {
+			int number = min + (int)(Math.random() * ((max - min) + 1));
+			return number;
+			
 			
 		}
 		
