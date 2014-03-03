@@ -12,12 +12,19 @@ import java.util.Random;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class PlayScreen extends Activity {
 
 	// The String Below will tell Console/LogCat the processes of The PlayScreen Activity
 
 	private final String PS = "Play Screen";
+	private char[] secretWord;
+	private char[] displayedWord;
+	// Below is an array of the Letters already guessed.
+	private ArrayList<Character> chosenLetters = new ArrayList<Character>();
 	Random random = new Random();
 
 	@Override
@@ -26,7 +33,7 @@ public class PlayScreen extends Activity {
 		setContentView(R.layout.activity_playscreen);
 		Log.i(PS, "Loading Play Screen.");
 		
-		
+		startGame();
 	}
 	
 	// Read Text File entitled wordsEn.txt 
@@ -60,20 +67,71 @@ public class PlayScreen extends Activity {
 		    }
 			
 			//R Generator for Strings in wordLineArray 
-			String random = wordLineArray.get(getRandomNumber(0, wordLineArray.size()));
-
+			//String secretWordString = wordLineArray.get(getRandomNumber(0, wordLineArray.size()));
+			String secretWordString = "HelloWorld";
+			secretWord = secretWordString.toCharArray();
+			for (int i = 0; i < secretWord.length; i++) {
+				displayedWord[i] = '-';
+			}
 		    return words;
 		  
 		}
 		
-		// Word Guesser. Remember: Switch statements instead of multiple if's
+		// Choose a random number that is assigned to a corresponding String in ArrayList
 		
 		public int getRandomNumber(int min, int max) {
 			int number = min + (int)(Math.random() * ((max - min) + 1));
 			return number;
-			
+				
+		}
+		
+		public void startGame() {
+			//readFromFile();
+			String secretWordString = "HelloWorld";
+			secretWord = secretWordString.toCharArray();
+			displayedWord = new char[secretWord.length];
+			for (int i = 0; i < secretWord.length; i++) {
+				displayedWord[i] = '-';
+			}
+
+		}
+		
+		public void findLetters(String guess) {
+			for (int i = 0; i < secretWord.length; i++) {
+				// Change Guess to CharArray and 0 Index.
+				if (!guess.isEmpty()) {
+					if (guess.toCharArray()[0] == secretWord[i]) {
+						Log.i(PS, "Correct Guess");
+						displayedWord[i] = guess.toCharArray()[0]; 
+					}
+				}
+			}
+			// Add Guess to the already chosen letter array
+			if (!guess.isEmpty()) {
+				chosenLetters.add(guess.toCharArray()[0]);
+			}
+		}
+		
+		public boolean checkWin() {
+			if (displayedWord == secretWord) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		public void guessButtonClick(View v) {
+			TextView displayText = (TextView) findViewById(R.id.displayedWord);
+			displayText.setText(displayedWord.toString());
+			EditText inputGuess = (EditText) findViewById(R.id.textField);
+			String guess = inputGuess.getText().toString();
+			findLetters(guess);
 			
 		}
+		
+		
+
+		
 		
 		
 		
