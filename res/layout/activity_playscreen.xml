@@ -10,11 +10,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/keyBoard"
-        android:layout_width="48dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.52"
-        android:text="@string/KeyBoard" />
-
 </LinearLayout>

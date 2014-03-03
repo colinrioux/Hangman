@@ -66,6 +66,10 @@ public class PlayScreen extends Activity {
 		  
 		}
 		
+		public void guessTheWord() {
+			
+		}
+		
 		
 		
 		
