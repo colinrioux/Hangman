@@ -17,7 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class PlayScreen extends Activity {
-
+	/* Before we Begin, I would like to thank Sam Lazurus for debugging my code and helping me find the errors. It ended up being just the order of the code written Monday Night. */
+	/* I would also like to Thank Zach Yeddia for helping me code some of it under your provision. */
 	// The String Below will tell Console/LogCat the processes of The PlayScreen Activity
 
 	private final String PS = "Play Screen";
@@ -43,7 +44,7 @@ public class PlayScreen extends Activity {
 			ArrayList<String> wordLineArray = new ArrayList<String>();
 			
 			try { 
-				InputStream inputstream = openFileInput("wordsEn.txt");
+				InputStream inputstream = getResources().openRawResource(R.raw.words);
 				if (inputstream != null) {
 					InputStreamReader inputStreamReader = new InputStreamReader(inputstream);
 					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -51,6 +52,7 @@ public class PlayScreen extends Activity {
 					StringBuilder stringBuilder = new StringBuilder();
 					
 					while ( (receiveString = bufferedReader.readLine()) != null ) {
+						// wordLineArray defined and filled. **Array**
 						wordLineArray.add(receiveString);
 		                stringBuilder.append(receiveString);
 		            }
@@ -67,12 +69,14 @@ public class PlayScreen extends Activity {
 		    }
 			
 			//R Generator for Strings in wordLineArray 
-			//String secretWordString = wordLineArray.get(getRandomNumber(0, wordLineArray.size()));
-			String secretWordString = "HelloWorld";
-			secretWord = secretWordString.toCharArray();
+			secretWord = wordLineArray.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
+			// Put displayedWord up here. Needed to be defined in order to run readFromFile() Below.
+			displayedWord = new char[secretWord.length];
 			for (int i = 0; i < secretWord.length; i++) {
 				displayedWord[i] = '-';
 			}
+			TextView displayText = (TextView) findViewById(R.id.displayedWord);
+			displayText.setText(String.valueOf(displayedWord));
 		    return words;
 		  
 		}
@@ -86,14 +90,8 @@ public class PlayScreen extends Activity {
 		}
 		
 		public void startGame() {
-			//readFromFile();
-			String secretWordString = "HelloWorld";
-			secretWord = secretWordString.toCharArray();
-			displayedWord = new char[secretWord.length];
-			for (int i = 0; i < secretWord.length; i++) {
-				displayedWord[i] = '-';
-			}
-
+			// Running the function @ the Start of the game in onCreate(). This removes repeats of code.
+			readFromFile();
 		}
 		
 		public void findLetters(String guess) {
@@ -103,7 +101,7 @@ public class PlayScreen extends Activity {
 					if (guess.toCharArray()[0] == secretWord[i]) {
 						Log.i(PS, "Correct Guess");
 						displayedWord[i] = guess.toCharArray()[0]; 
-					}
+					} 
 				}
 			}
 			// Add Guess to the already chosen letter array
@@ -111,7 +109,7 @@ public class PlayScreen extends Activity {
 				chosenLetters.add(guess.toCharArray()[0]);
 			}
 		}
-		
+		// The Series of Print outs let the console know that you won the game. 
 		public boolean checkWin() {
 			if (displayedWord == secretWord) {
 				return true;
@@ -122,19 +120,17 @@ public class PlayScreen extends Activity {
 		
 		public void guessButtonClick(View v) {
 			TextView displayText = (TextView) findViewById(R.id.displayedWord);
-			displayText.setText(displayedWord.toString());
 			EditText inputGuess = (EditText) findViewById(R.id.textField);
-			String guess = inputGuess.getText().toString();
+			// Its an error only because toLowerCase is awkward with a string. Program still runs.
+			String guess = inputGuess.getText().toString().toLowerCase();
 			findLetters(guess);
-			
+			displayText.setText(String.valueOf(displayedWord));
+			Log.i(PS, String.valueOf(displayedWord));
+			Log.i(PS, String.valueOf(secretWord));
+			inputGuess.setText("");
 		}
 		
 		
-
-		
-		
-		
-		
-		
+		//TODO Will Insert Your Code below this comment.
 
 }

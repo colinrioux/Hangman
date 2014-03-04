@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title">Hangman</string>
     <string name="ButtonTitle">Play!</string>
-    <string name="KeyBoard">KB</string>
+    <string name="Guess">Guess</string>
+    <string name="EditText">Guess A Letter</string>
+    <string name="Credits">Please Thank Zach Yeddia and Sam Lazurus for helping debug some errors.</string>
 
 </resources>
