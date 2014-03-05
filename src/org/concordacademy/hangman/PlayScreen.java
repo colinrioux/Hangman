@@ -151,32 +151,26 @@ public class PlayScreen extends Activity {
 
 	public void switchImage(View view) {
 		ImageView img = (ImageView) findViewById(R.id.imageView1);
-		Drawable gallows1 = getResources().getDrawable(R.drawable.gallows1);
-		Drawable gallows2 = getResources().getDrawable(R.drawable.gallows2);
-		Drawable gallows3 = getResources().getDrawable(R.drawable.gallows3);
-		Drawable gallows4 = getResources().getDrawable(R.drawable.gallows4);
-		Drawable gallows5 = getResources().getDrawable(R.drawable.gallows5);
-		Drawable gallows6 = getResources().getDrawable(R.drawable.gallows6);
-		if (img.getDrawable() == getResources()
-				.getDrawable(R.drawable.gallows0)) {
-			img.setImageDrawable(gallows1);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows1)) {
-			img.setImageDrawable(gallows2);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows2)) {
-			img.setImageDrawable(gallows3);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows3)) {
-			img.setImageDrawable(gallows4);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows4)) {
-			img.setImageDrawable(gallows5);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows5)) {
-			img.setImageDrawable(gallows6);
-		} else if (img.getDrawable() == getResources().getDrawable(
-				R.drawable.gallows6)) {
+		img.setTag("0");
+		if (img.getTag() == "0") {
+			img.setImageResource(R.drawable.gallows1);
+			img.setTag("1");
+		} else if (img.getTag() == "1") {
+			img.setImageResource(R.drawable.gallows2);
+			img.setTag("2");
+		} else if (img.getTag() == "2") {
+			img.setImageResource(R.drawable.gallows3);
+			img.setTag("3");
+		} else if (img.getTag() == "3") {
+			img.setImageResource(R.drawable.gallows4);
+			img.setTag("4");
+		} else if (img.getTag() == "4") {
+			img.setImageResource(R.drawable.gallows5);
+			img.setTag("5");;
+		} else if (img.getTag() == "5") {
+			img.setImageResource(R.drawable.gallows6);
+			img.setTag("6");
+		} else if (img.getTag() == "6") {
 			return;
 		}
 
