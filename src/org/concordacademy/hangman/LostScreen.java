@@ -11,9 +11,10 @@ public class LostScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lostscreen);
 	}
-	
+
 	public void returnToPlayScreen(View v) {
-		Intent loseReturnToPlayScreen = new Intent(LostScreen.this, PlayScreen.class);
+		Intent loseReturnToPlayScreen = new Intent(LostScreen.this,
+				PlayScreen.class);
 		startActivity(loseReturnToPlayScreen);
 	}
 

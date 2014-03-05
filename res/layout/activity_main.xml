@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
-        android:text="@string/ButtonTitle"
-        android:onClick="playGame" />
+        android:onClick="playGame"
+        android:text="@string/ButtonTitle" />
 
 </LinearLayout>

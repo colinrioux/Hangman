@@ -17,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/ResetButtonLost"
-        android:onClick="returnToPlayScreen" />
+        android:onClick="returnToPlayScreen"
+        android:text="@string/ResetButtonLost" />
 
     <TextView
         android:id="@+id/textView1"

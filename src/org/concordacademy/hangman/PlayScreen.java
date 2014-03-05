@@ -37,14 +37,14 @@ public class PlayScreen extends Activity {
 	// Below is an array of the Letters already guessed.
 	private ArrayList<Character> chosenLetters = new ArrayList<Character>();
 	Random random = new Random();
-    ImageView img;
-    
+	ImageView img;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playscreen);
 		Log.i(PS, "Loading Play Screen.");
-first = true;
+		first = true;
 		startGame();
 	}
 
@@ -82,7 +82,8 @@ first = true;
 		}
 
 		// R Generator for Strings in wordLineArray
-		secretWord = wordLineArray.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
+		secretWord = wordLineArray
+				.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
 		// Put displayedWord up here. Needed to be defined in order to run
 		// readFromFile() Below.
 		displayedWord = new char[secretWord.length];
@@ -111,8 +112,8 @@ first = true;
 	}
 
 	public void findLetters(String guess) {
-		
-		boolean wrong= true;
+
+		boolean wrong = true;
 		for (int i = 0; i < secretWord.length; i++) {
 			// Change Guess to CharArray and 0 Index.
 			if (!guess.isEmpty()) {
@@ -121,8 +122,8 @@ first = true;
 					Log.i(PS, "Correct Guess");
 					displayedWord[i] = guess.toCharArray()[0];
 					wrong = false;
-					
-				} 
+
+				}
 			}
 		}
 		if (wrong == true) {
@@ -132,50 +133,48 @@ first = true;
 		if (!guess.isEmpty()) {
 			chosenLetters.add(guess.toCharArray()[0]);
 		}
-		
-		
+
 	}
-	
-	//Image Method
-	
-    
+
+	// Image Method
+
 	public void switchImage(View view) {
 		img = (ImageView) findViewById(R.id.imageView1);
-		if(first == true){
-		img.setTag("0");
-		first = false;
+		if (first == true) {
+			img.setTag("0");
+			first = false;
 		}
-        if (img.getTag() == "0") {
-            img.setImageResource(R.drawable.gallows1);
-            img.setTag("1");
-            return;
-        } else if (img.getTag() == "1") {
-            img.setImageResource(R.drawable.gallows2);
-            img.setTag("2");
-            return;
-        } else if (img.getTag() == "2") {
-            img.setImageResource(R.drawable.gallows3);
-            img.setTag("3");
-            return;
-        } else if (img.getTag() == "3") {
-            img.setImageResource(R.drawable.gallows4);
-            img.setTag("4");
-            return;
-        } else if (img.getTag() == "4") {
-            img.setImageResource(R.drawable.gallows5);
-            img.setTag("5");
-            return;
-        } else if (img.getTag() == "5") {
-            img.setImageResource(R.drawable.gallows6);
-            img.setTag("6");
-            return;
-        } else if (img.getTag() == "6") {
-        	Intent pushToLoseScreen = new Intent(PlayScreen.this, LostScreen.class);
+		if (img.getTag() == "0") {
+			img.setImageResource(R.drawable.gallows1);
+			img.setTag("1");
+			return;
+		} else if (img.getTag() == "1") {
+			img.setImageResource(R.drawable.gallows2);
+			img.setTag("2");
+			return;
+		} else if (img.getTag() == "2") {
+			img.setImageResource(R.drawable.gallows3);
+			img.setTag("3");
+			return;
+		} else if (img.getTag() == "3") {
+			img.setImageResource(R.drawable.gallows4);
+			img.setTag("4");
+			return;
+		} else if (img.getTag() == "4") {
+			img.setImageResource(R.drawable.gallows5);
+			img.setTag("5");
+			return;
+		} else if (img.getTag() == "5") {
+			img.setImageResource(R.drawable.gallows6);
+			img.setTag("6");
+			return;
+		} else if (img.getTag() == "6") {
+			Intent pushToLoseScreen = new Intent(PlayScreen.this,
+					LostScreen.class);
 			startActivity(pushToLoseScreen);
 			return;
-        }
-    }
-	
+		}
+	}
 
 	public void guessButtonClick(View v) {
 		TextView displayText = (TextView) findViewById(R.id.displayedWord);
@@ -190,24 +189,25 @@ first = true;
 		inputGuess.setText("");
 		checkWin();
 	}
-	
+
 	// The Series of Print outs let the console know that you won the game.
-		public void checkWin() {
-			Log.i(PS, "CheckWinWorking");
-			int x = 0;
-			for (int i = 0; i < displayedWord.length; i++) {
-				if (!(displayedWord[i] == '-')) {
-					x++;
-				}
+	public void checkWin() {
+		Log.i(PS, "CheckWinWorking");
+		int x = 0;
+		for (int i = 0; i < displayedWord.length; i++) {
+			if (!(displayedWord[i] == '-')) {
+				x++;
 			}
-			if (x == displayedWord.length) {
-				Log.i(PS, "DisplayedWord equals SecretWord");
-				Intent pushToWinScreen = new Intent(PlayScreen.this, WinScreen.class);
-				startActivity(pushToWinScreen);
-				
-			} else {
-				Log.i(PS, "DisplayedWord does not equal SecretWord");
-			} 
 		}
-	
+		if (x == displayedWord.length) {
+			Log.i(PS, "DisplayedWord equals SecretWord");
+			Intent pushToWinScreen = new Intent(PlayScreen.this,
+					WinScreen.class);
+			startActivity(pushToWinScreen);
+
+		} else {
+			Log.i(PS, "DisplayedWord does not equal SecretWord");
+		}
+	}
+
 }
