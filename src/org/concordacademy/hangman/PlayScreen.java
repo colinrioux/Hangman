@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -80,8 +79,7 @@ public class PlayScreen extends Activity {
 		}
 
 		// R Generator for Strings in wordLineArray
-		secretWord = wordLineArray
-				.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
+		secretWord = wordLineArray.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
 		// Put displayedWord up here. Needed to be defined in order to run
 		// readFromFile() Below.
 		displayedWord = new char[secretWord.length];
@@ -108,14 +106,47 @@ public class PlayScreen extends Activity {
 		// removes repeats of code.
 		readFromFile();
 	}
+	
+	//Image Method
+	
+	public void switchImage(View view) {
+		ImageView img = (ImageView) findViewById(R.id.imageView1);
+		img.setTag("0");
+		if (img.getTag() == "0") {
+			img.setImageResource(R.drawable.gallows1);
+			img.setTag("1");
+		} else if (img.getTag() == "1") {
+			img.setImageResource(R.drawable.gallows2);
+			img.setTag("2");
+		} else if (img.getTag() == "2") {
+			img.setImageResource(R.drawable.gallows3);
+			img.setTag("3");
+		} else if (img.getTag() == "3") {
+			img.setImageResource(R.drawable.gallows4);
+			img.setTag("4");
+		} else if (img.getTag() == "4") {
+			img.setImageResource(R.drawable.gallows5);
+			img.setTag("5");;
+		} else if (img.getTag() == "5") {
+			img.setImageResource(R.drawable.gallows6);
+			img.setTag("6");
+		} else if (img.getTag() == "6") {
+			return;
+		}
+	}
 
 	public void findLetters(String guess) {
 		for (int i = 0; i < secretWord.length; i++) {
 			// Change Guess to CharArray and 0 Index.
 			if (!guess.isEmpty()) {
+				// This checks if the guess is correct.
 				if (guess.toCharArray()[0] == secretWord[i]) {
 					Log.i(PS, "Correct Guess");
 					displayedWord[i] = guess.toCharArray()[0];
+				} else {
+					// This else statement says that if the guess is wrong, it will run the switchImage method
+					switchImage(null);
+					
 				}
 			}
 		}
@@ -146,34 +177,5 @@ public class PlayScreen extends Activity {
 		Log.i(PS, String.valueOf(secretWord));
 		inputGuess.setText("");
 	}
-
-	// Method to change imageView to gallows images.
-
-	public void switchImage(View view) {
-		ImageView img = (ImageView) findViewById(R.id.imageView1);
-		img.setTag("0");
-		if (img.getTag() == "0") {
-			img.setImageResource(R.drawable.gallows1);
-			img.setTag("1");
-		} else if (img.getTag() == "1") {
-			img.setImageResource(R.drawable.gallows2);
-			img.setTag("2");
-		} else if (img.getTag() == "2") {
-			img.setImageResource(R.drawable.gallows3);
-			img.setTag("3");
-		} else if (img.getTag() == "3") {
-			img.setImageResource(R.drawable.gallows4);
-			img.setTag("4");
-		} else if (img.getTag() == "4") {
-			img.setImageResource(R.drawable.gallows5);
-			img.setTag("5");;
-		} else if (img.getTag() == "5") {
-			img.setImageResource(R.drawable.gallows6);
-			img.setTag("6");
-		} else if (img.getTag() == "6") {
-			return;
-		}
-
-	}
-
+	
 }
