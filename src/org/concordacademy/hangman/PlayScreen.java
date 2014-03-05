@@ -1,6 +1,5 @@
 package org.concordacademy.hangman;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,16 +9,26 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PlayScreen extends Activity {
-	/* Before we Begin, I would like to thank Sam Lazurus for debugging my code and helping me find the errors. It ended up being just the order of the code written Monday Night. */
-	/* I would also like to Thank Zach Yeddia for helping me code some of it under your provision. */
-	// The String Below will tell Console/LogCat the processes of The PlayScreen Activity
+	/*
+	 * Before we Begin, I would like to thank Sam Lazarus for debugging my code
+	 * and helping me find the errors. It ended up being just the order of the
+	 * code written Monday Night.
+	 */
+	/*
+	 * I would also like to Thank Zach Yeddia for helping me code some of it
+	 * under your provision.
+	 */
+	// The String Below will tell Console/LogCat the processes of The PlayScreen
+	// Activity
 
 	private final String PS = "Play Screen";
 	private char[] secretWord;
@@ -33,104 +42,144 @@ public class PlayScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playscreen);
 		Log.i(PS, "Loading Play Screen.");
-		
+
 		startGame();
 	}
-	
-	// Read Text File entitled wordsEn.txt 
-		public String readFromFile() {
-			String words = "";
-			// Array List That Words being added to
-			ArrayList<String> wordLineArray = new ArrayList<String>();
-			
-			try { 
-				InputStream inputstream = getResources().openRawResource(R.raw.words);
-				if (inputstream != null) {
-					InputStreamReader inputStreamReader = new InputStreamReader(inputstream);
-					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-					String receiveString = "";
-					StringBuilder stringBuilder = new StringBuilder();
-					
-					while ( (receiveString = bufferedReader.readLine()) != null ) {
-						// wordLineArray defined and filled. **Array**
-						wordLineArray.add(receiveString);
-		                stringBuilder.append(receiveString);
-		            }
-					inputstream.close();
-					// Possible pointless code below
-		            words = stringBuilder.toString();
+
+	// Read Text File entitled wordsEn.txt
+	public String readFromFile() {
+		String words = "";
+		// Array List That Words being added to
+		ArrayList<String> wordLineArray = new ArrayList<String>();
+
+		try {
+			InputStream inputstream = getResources().openRawResource(
+					R.raw.words);
+			if (inputstream != null) {
+				InputStreamReader inputStreamReader = new InputStreamReader(
+						inputstream);
+				BufferedReader bufferedReader = new BufferedReader(
+						inputStreamReader);
+				String receiveString = "";
+				StringBuilder stringBuilder = new StringBuilder();
+
+				while ((receiveString = bufferedReader.readLine()) != null) {
+					// wordLineArray defined and filled. **Array**
+					wordLineArray.add(receiveString);
+					stringBuilder.append(receiveString);
 				}
-				
+				inputstream.close();
+				// Possible pointless code below
+				words = stringBuilder.toString();
 			}
-			catch (FileNotFoundException e) {
-		        Log.e("login activity", "File not found: " + e.toString());
-		    } catch (IOException e) {
-		        Log.e("login activity", "Can not read file: " + e.toString());
-		    }
-			
-			//R Generator for Strings in wordLineArray 
-			secretWord = wordLineArray.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
-			// Put displayedWord up here. Needed to be defined in order to run readFromFile() Below.
-			displayedWord = new char[secretWord.length];
-			for (int i = 0; i < secretWord.length; i++) {
-				displayedWord[i] = '-';
-			}
-			TextView displayText = (TextView) findViewById(R.id.displayedWord);
-			displayText.setText(String.valueOf(displayedWord));
-		    return words;
-		  
+
+		} catch (FileNotFoundException e) {
+			Log.e("login activity", "File not found: " + e.toString());
+		} catch (IOException e) {
+			Log.e("login activity", "Can not read file: " + e.toString());
 		}
-		
-		// Choose a random number that is assigned to a corresponding String in ArrayList
-		
-		public int getRandomNumber(int min, int max) {
-			int number = min + (int)(Math.random() * ((max - min) + 1));
-			return number;
-				
+
+		// R Generator for Strings in wordLineArray
+		secretWord = wordLineArray
+				.get(getRandomNumber(0, wordLineArray.size())).toCharArray();
+		// Put displayedWord up here. Needed to be defined in order to run
+		// readFromFile() Below.
+		displayedWord = new char[secretWord.length];
+		for (int i = 0; i < secretWord.length; i++) {
+			displayedWord[i] = '-';
 		}
-		
-		public void startGame() {
-			// Running the function @ the Start of the game in onCreate(). This removes repeats of code.
-			readFromFile();
-		}
-		
-		public void findLetters(String guess) {
-			for (int i = 0; i < secretWord.length; i++) {
-				// Change Guess to CharArray and 0 Index.
-				if (!guess.isEmpty()) {
-					if (guess.toCharArray()[0] == secretWord[i]) {
-						Log.i(PS, "Correct Guess");
-						displayedWord[i] = guess.toCharArray()[0]; 
-					} 
-				}
-			}
-			// Add Guess to the already chosen letter array
+		TextView displayText = (TextView) findViewById(R.id.displayedWord);
+		displayText.setText(String.valueOf(displayedWord));
+		return words;
+
+	}
+
+	// Choose a random number that is assigned to a corresponding String in
+	// ArrayList
+
+	public int getRandomNumber(int min, int max) {
+		int number = min + (int) (Math.random() * ((max - min) + 1));
+		return number;
+
+	}
+
+	public void startGame() {
+		// Running the function @ the Start of the game in onCreate(). This
+		// removes repeats of code.
+		readFromFile();
+	}
+
+	public void findLetters(String guess) {
+		for (int i = 0; i < secretWord.length; i++) {
+			// Change Guess to CharArray and 0 Index.
 			if (!guess.isEmpty()) {
-				chosenLetters.add(guess.toCharArray()[0]);
+				if (guess.toCharArray()[0] == secretWord[i]) {
+					Log.i(PS, "Correct Guess");
+					displayedWord[i] = guess.toCharArray()[0];
+				}
 			}
 		}
-		// The Series of Print outs let the console know that you won the game. 
-		public boolean checkWin() {
-			if (displayedWord == secretWord) {
-				return true;
-			} else {
-				return false;
-			}
+		// Add Guess to the already chosen letter array
+		if (!guess.isEmpty()) {
+			chosenLetters.add(guess.toCharArray()[0]);
 		}
-		
-		public void guessButtonClick(View v) {
-			TextView displayText = (TextView) findViewById(R.id.displayedWord);
-			EditText inputGuess = (EditText) findViewById(R.id.textField);
-			// Its an error only because toLowerCase is awkward with a string. Program still runs.
-			String guess = inputGuess.getText().toString().toLowerCase();
-			findLetters(guess);
-			displayText.setText(String.valueOf(displayedWord));
-			Log.i(PS, String.valueOf(displayedWord));
-			Log.i(PS, String.valueOf(secretWord));
-			inputGuess.setText("");
+	}
+
+	// The Series of Print outs let the console know that you won the game.
+	public boolean checkWin() {
+		if (displayedWord == secretWord) {
+			return true;
+		} else {
+			return false;
 		}
-		
-		
-		//TODO Will Insert Your Code below this comment.
+	}
+
+	public void guessButtonClick(View v) {
+		TextView displayText = (TextView) findViewById(R.id.displayedWord);
+		EditText inputGuess = (EditText) findViewById(R.id.textField);
+		// Its an error only because toLowerCase is awkward with a string.
+		// Program still runs.
+		String guess = inputGuess.getText().toString().toLowerCase();
+		findLetters(guess);
+		displayText.setText(String.valueOf(displayedWord));
+		Log.i(PS, String.valueOf(displayedWord));
+		Log.i(PS, String.valueOf(secretWord));
+		inputGuess.setText("");
+	}
+
+	// Method to change imageView to gallows images.
+
+	public void switchImage(View view) {
+		ImageView img = (ImageView) findViewById(R.id.imageView1);
+		Drawable gallows1 = getResources().getDrawable(R.drawable.gallows1);
+		Drawable gallows2 = getResources().getDrawable(R.drawable.gallows2);
+		Drawable gallows3 = getResources().getDrawable(R.drawable.gallows3);
+		Drawable gallows4 = getResources().getDrawable(R.drawable.gallows4);
+		Drawable gallows5 = getResources().getDrawable(R.drawable.gallows5);
+		Drawable gallows6 = getResources().getDrawable(R.drawable.gallows6);
+		if (img.getDrawable() == getResources()
+				.getDrawable(R.drawable.gallows0)) {
+			img.setImageDrawable(gallows1);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows1)) {
+			img.setImageDrawable(gallows2);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows2)) {
+			img.setImageDrawable(gallows3);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows3)) {
+			img.setImageDrawable(gallows4);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows4)) {
+			img.setImageDrawable(gallows5);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows5)) {
+			img.setImageDrawable(gallows6);
+		} else if (img.getDrawable() == getResources().getDrawable(
+				R.drawable.gallows6)) {
+			return;
+		}
+
+	}
 
 }

@@ -5,12 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <fragment
-        android:id="@+id/fragment1"
-        android:name="org.concordacademy.hangman.GallowsFragment"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout="@layout/activity_gallows" />
+        android:layout_gravity="center_horizontal"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/hello_world"
+        android:onClick="switchImage"
+        android:src="@drawable/gallows0" />
 
     <EditText
         android:id="@+id/textField"
@@ -27,6 +30,7 @@
         android:id="@+id/displayedWord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="" />
 
     <Button
