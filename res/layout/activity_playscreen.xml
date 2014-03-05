@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
         android:background="#FFFFFF"
         android:contentDescription="@string/hello_world"
         android:onClick="switchImage"
@@ -19,9 +20,10 @@
         android:id="@+id/textField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:ems="10"
-        android:inputType="text"
-        android:hint="@string/EditText" >
+        android:hint="@string/EditText"
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>
@@ -30,14 +32,16 @@
         android:id="@+id/displayedWord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="" />
+        android:layout_margin="5dp"
+        android:text=""
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/guessButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Guess"
-        android:onClick="guessButtonClick" />
+        android:layout_margin="5dp"
+        android:onClick="guessButtonClick"
+        android:text="@string/Guess" />
 
 </LinearLayout>
