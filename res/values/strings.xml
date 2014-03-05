@@ -9,5 +9,10 @@
     <string name="Guess">Guess</string>
     <string name="EditText">Guess a Letter</string>
     <string name="Credits">Please Thank Zach Yeddia and Sam Lazurus for helping debug some errors.</string>
+    <string name="LostScreen">Many Thanks to Ethan, who happened to help debug the lost screen. </string>
+    <string name="ResetButtonLost">Play Again</string>
+    <string name="LoseScreenMessage">You Lost! Want to Play Again?</string>
+    <string name="WinScreenMessage">Congratz! You win! Play Again?</string>
+    <string name="ResetButtonWin">Play Again</string>
 
 </resources>

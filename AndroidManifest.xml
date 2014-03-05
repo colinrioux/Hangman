@@ -23,6 +23,10 @@
         </activity>
         <activity android:name=".PlayScreen" >
         </activity>
+         <activity android:name=".LostScreen" >
+        </activity>
+         <activity android:name=".WinScreen" >
+        </activity>
         <activity android:name=".GallowsActivity" >
         </activity>
     </application>

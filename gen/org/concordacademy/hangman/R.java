@@ -32,19 +32,23 @@ public final class R {
         public static final int ic_launcher=0x7f020008;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f090000;
-        public static final int action_settings=0x7f090008;
-        public static final int displayedWord=0x7f090006;
-        public static final int guessButton=0x7f090007;
-        public static final int imageView1=0x7f090004;
-        public static final int keyBoard=0x7f090003;
-        public static final int testview1=0x7f090001;
-        public static final int textField=0x7f090005;
+        public static final int LinearLayout1=0x7f090003;
+        public static final int action_settings=0x7f09000a;
+        public static final int button1=0x7f090001;
+        public static final int displayedWord=0x7f090008;
+        public static final int guessButton=0x7f090009;
+        public static final int imageView1=0x7f090006;
+        public static final int keyBoard=0x7f090005;
+        public static final int testview1=0x7f090004;
+        public static final int textField=0x7f090007;
         public static final int textView1=0x7f090002;
+        public static final int textView2=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_playscreen=0x7f030001;
+        public static final int activity_lostscreen=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_playscreen=0x7f030002;
+        public static final int activity_winscreen=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -57,6 +61,11 @@ public final class R {
         public static final int Credits=0x7f060007;
         public static final int EditText=0x7f060006;
         public static final int Guess=0x7f060005;
+        public static final int LoseScreenMessage=0x7f06000a;
+        public static final int LostScreen=0x7f060008;
+        public static final int ResetButtonLost=0x7f060009;
+        public static final int ResetButtonWin=0x7f06000c;
+        public static final int WinScreenMessage=0x7f06000b;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
