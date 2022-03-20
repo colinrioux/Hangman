@@ -1,5 +1,5 @@
 # Hangman 
 ======
-Project by pnhwill and colin350 for school project 2014
+Project by pnhwill and colinrioux for school project 2014
 
 Old
